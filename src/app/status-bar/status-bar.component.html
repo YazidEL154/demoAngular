@@ -1,0 +1,15 @@
+<div class="card">
+    <!-- {{hero.name}} est une interpolation -->
+    <label>{{ hero.name }}
+        <!-- [max] est un property binding -->
+        <progress [max]="hero.hpMax" [value]="hero.hp">
+            {{hero.hp/hero.hpMax}}
+        </progress>{{hero.hp}}/{{hero.hpMax}}
+    </label>
+    <!-- event binding: l'événement click sur cette balise déclenchera
+        l'appel de la fonction perdreHp
+    -->
+    <button (click)="perdreHp(5)">Taper</button>
+    <button (click)="perdreHp(50)">Taper fort</button>
+    <button (click)="perdreHp(500)">Taper trés fort</button>
+</div>
