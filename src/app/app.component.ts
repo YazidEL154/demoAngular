@@ -21,10 +21,8 @@ export class AppComponent implements OnInit {
     console.log(this.heros);
   }
 
-  newHero!: Hero;
+  newHero: Hero = { name: '', hp: 0, hpMax: 0 };
   heros: Hero[] = [];
-
-  message?: string;
 
   ajouterHero() {
     this.newHero.hp = this.newHero.hpMax;

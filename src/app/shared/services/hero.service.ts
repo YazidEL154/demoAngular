@@ -5,13 +5,13 @@ import { Hero } from '../models/hero';
   providedIn: 'root',
 })
 export class HeroService {
-  
+
   heros: Hero[] = [
     { name: 'Michel', hp: 330, hpMax: 500 },
     { name: 'Thierry', hp: 120, hpMax: 300 },
     { name: 'Jeanne', hp: 250, hpMax: 350 },
     { name: 'John', hp: 10, hpMax: 400 },
-    { name: 'Chuck Norris', hp: Infinity, hpMax: Infinity },
+    { name: 'Chuck Norris', hp: 10000, hpMax: 10000 },
   ];
 
   constructor() {}
