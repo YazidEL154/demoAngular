@@ -26,6 +26,8 @@ export class AppComponent implements OnInit {
 
   ajouterHero() {
     this.newHero.hp = this.newHero.hpMax;
-    this.heroService.addHero(this.newHero);
+    let hero = this.newHero
+    this.heroService.addHero(hero);
+    this.newHero = { name: '', hp: 0, hpMax: 0 };
   }
 }
