@@ -17,5 +17,7 @@
 <div>
     <label for="hp">Points de vie max</label>
     <input type="text" name="hp" id="hp" [(ngModel)]="newHero.hpMax">
+    <!-- version sans boîte à bannane -->
+    <!-- <input type="text" name="hp" id="hp" [value]="newHero.hpMax" (input)="changeHpMax($event.target.value)"> -->
 </div>
 <button (click)="ajouterHero()">ajouter</button>

@@ -9,6 +9,10 @@ import { HeroService } from './shared/services/hero.service';
 })
 // implements OnInit pour indiquer à Angular d'appeler cette méthode
 export class AppComponent implements OnInit {
+
+  newHero: Hero = { name: '', hp: 0, hpMax: 0 };
+  heros: Hero[] = [];
+
   // déclenché à l'initialisation de la classe
   constructor(private heroService: HeroService) {
     console.log('constructor');
@@ -20,9 +24,6 @@ export class AppComponent implements OnInit {
     this.heros = this.heroService.heros;
     console.log(this.heros);
   }
-
-  newHero: Hero = { name: '', hp: 0, hpMax: 0 };
-  heros: Hero[] = [];
 
   ajouterHero() {
     this.newHero.hp = this.newHero.hpMax;
