@@ -1,0 +1,19 @@
+<form [formGroup]="formulaire" (ngSubmit)="envoyerFormulaire()">
+    <div class="form-item">
+        <label for="nom">Nom</label>
+        <input type="text" name="nom" id="nom" formControlName="nom">
+    </div>
+    <div class="form-item">
+        <label for="prenom">Prenom</label>
+        <input type="text" name="prenom" id="prenom" formControlName="prenom">
+    </div>
+    <div class="form-item">
+        <label for="age">Age</label>
+        <input type="text" name="age" id="age" formControlName="age">
+    </div>
+    <div class="form-item">
+        <label for="email">Adresse Mail</label>
+        <input type="text" name="email" id="email" formControlName="email">
+    </div>
+    <button type="submit" [disabled]="!formulaire.valid">Envoyer</button>
+</form>
