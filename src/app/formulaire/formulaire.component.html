@@ -2,6 +2,7 @@
     <div class="form-item">
         <label for="nom">Nom</label>
         <input type="text" name="nom" id="nom" formControlName="nom">
+        <p class="alert" *ngIf="formulaire.controls.nom.errors?.required">Le champs est requis</p>
     </div>
     <div class="form-item">
         <label for="prenom">Prenom</label>
@@ -9,7 +10,9 @@
     </div>
     <div class="form-item">
         <label for="age">Age</label>
-        <input type="text" name="age" id="age" formControlName="age">
+        <input type="number" name="age" id="age" formControlName="age">
+        <p class="alert" *ngIf="formulaire.controls.age.errors?.min">L'age doit être supérieur à 0</p>
+        <p class="alert" *ngIf="formulaire.controls.age.errors?.max">L'age doit être inférieur à 120</p>
     </div>
     <div class="form-item">
         <label for="email">Adresse Mail</label>

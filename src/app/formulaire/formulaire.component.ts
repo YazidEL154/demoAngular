@@ -20,16 +20,19 @@ export class FormulaireComponent implements OnInit {
   constructor(fb: FormBuilder) {
     // initialisation du formulaire
     this.formulaire = new FormGroup({
+      // Champ de formulaire avec 1 validateur
       nom: new FormControl('', Validators.required),
       prenom: new FormControl('', Validators.required),
+      // Champ avec plusieurs validateurs
       age: new FormControl('', [Validators.min(0), Validators.max(120)]),
-      email: new FormControl('', Validators.email),
+      email: new FormControl('', [Validators.email, Validators.required]),
     });
   }
 
   ngOnInit(): void {}
 
   envoyerFormulaire(): void {
+    // affichage en console du FormGroup qui contient les controls
     console.log(this.formulaire);
   }
 }
