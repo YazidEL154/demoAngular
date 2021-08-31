@@ -1,0 +1,15 @@
+li {
+    list-style-type: none;
+    display: inline;
+    margin: 1em;
+}
+
+a {
+    border-radius: 7%;
+    background-color: dodgerblue;
+    padding: .5em;
+}
+
+.active {
+    background-color: indianred;
+}
