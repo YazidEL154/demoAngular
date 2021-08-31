@@ -1,26 +1,11 @@
 <h1>Démo angular</h1>
+<nav>
+    <ul>
+        <!-- Redirection (ancre) vers un autre composant -->
+        <li><a routerLink="/form" routerLinkActive="active">Formulaire</a></li>
+        <li><a routerLink="/status" routerLinkActive="active">Status</a></li>
+        <!-- route avec paramètre -->
+        <li><a [routerLink]="['/number', number]" routerLinkActive="active">Number</a></li>
+    </ul>
+</nav>
 <router-outlet></router-outlet>
-
-<!-- [hero] property bindings pour envoyer un héro en entrée du composant -->
-<!-- directive *ngFor="let elem of array" extrait un elem d'un array (réutilisable immédiatement)
-    et répéte la génération du composant pour chacun des elem(s)
--->
-<app-status-bar [hero]="hero" *ngFor="let hero of heros"></app-status-bar>
-
-<!-- Two way binding -->
-<!-- La boite à bannane [()] combine event binding et property binding -->
-<!-- Attention aux imports dans le app.module => FormsModule -->
-<div>
-    <label for="hero">Nom du héro</label>
-    <input type="text" name="hero" id="hero" [(ngModel)]="newHero.name">
-</div>
-<div>
-    <label for="hp">Points de vie max</label>
-    <input type="text" name="hp" id="hp" [(ngModel)]="newHero.hpMax">
-    <!-- version sans boîte à bannane -->
-    <!-- <input type="text" name="hp" id="hp" [value]="newHero.hpMax" (input)="changeHpMax($event.target.value)"> -->
-</div>
-<button (click)="ajouterHero()">ajouter</button>
-
-
-<app-formulaire></app-formulaire>

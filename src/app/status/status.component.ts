@@ -9,6 +9,7 @@ import { HeroService } from '../shared/services/hero.service';
 })
 export class StatusComponent implements OnInit {
 
+<<<<<<< HEAD
   constructor(private heroService: HeroService) { console.log('constructor');}
 
   newHero: Hero = { name: '', hp: 0, hpMax: 0 };
@@ -20,9 +21,25 @@ export class StatusComponent implements OnInit {
   }
 
   ajouterHero() {
+=======
+  newHero: Hero = { name: '', hp: 0, hpMax: 0 };
+  heros: Hero[] = [];
+
+  constructor(private heroService: HeroService) { }
+
+  ngOnInit(): void {
+    this.heros = this.heroService.heros;
+  }
+
+  ajouterHero(): void {
+>>>>>>> de4e8211803df078e821c9013a08aa24aa52ef27
     this.newHero.hp = this.newHero.hpMax;
     let hero = this.newHero;
     this.heroService.addHero(hero);
     this.newHero = { name: '', hp: 0, hpMax: 0 };
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> de4e8211803df078e821c9013a08aa24aa52ef27
 }
