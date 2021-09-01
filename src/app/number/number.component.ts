@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-<<<<<<< HEAD
-=======
 import { ActivatedRoute, Router } from '@angular/router';
->>>>>>> de4e8211803df078e821c9013a08aa24aa52ef27
 
 @Component({
   selector: 'app-number',
@@ -11,11 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class NumberComponent implements OnInit {
 
-<<<<<<< HEAD
-  constructor() { }
-
-  ngOnInit(): void {
-=======
   number!: number;
 
   constructor(private router: ActivatedRoute) { }
@@ -28,7 +20,6 @@ export class NumberComponent implements OnInit {
     this.router.params.subscribe(params => {
       this.number = params.number
     })
->>>>>>> de4e8211803df078e821c9013a08aa24aa52ef27
   }
 
 }
