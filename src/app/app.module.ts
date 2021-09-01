@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { StatusBarComponent } from './status-bar/status-bar.component';
+import { StatusBarComponent } from './status/status-bar/status-bar.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { StatusComponent } from './status/status.component';
 import { NumberComponent } from './number/number.component';
@@ -13,6 +13,7 @@ import { CatsComponent } from './cats/cats.component';
 // Module responsable de la communication HTTP (Client)
 import { HttpClientModule } from "@angular/common/http";
 import { CatCardComponent } from './cats/cat-card/cat-card.component';
+import { NavbarComponent } from './shared/components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CatCardComponent } from './cats/cat-card/cat-card.component';
     NumberComponent,
     CatsComponent,
     CatCardComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Hero } from '../shared/models/hero';
+import { Hero } from '../../shared/models/hero';
 
 @Component({
   selector: 'app-status-bar',
