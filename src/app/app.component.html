@@ -2,8 +2,10 @@
 <nav>
     <ul>
         <!-- Redirection (ancre) vers un autre composant -->
+        <!-- routerLinkActive permet d'activer une classe CSS lorsque la route est active -->
         <li><a routerLink="/form" routerLinkActive="active">Formulaire</a></li>
         <li><a routerLink="/status" routerLinkActive="active">Status</a></li>
+        <li><a routerLink="/cats" routerLinkActive="active">Chats</a></li>
         <!-- route avec paramètre -->
         <li><a [routerLink]="['/number', number]" routerLinkActive="active">Number</a></li>
     </ul>

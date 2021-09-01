@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CatsComponent } from './cats/cats.component';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { NumberComponent } from './number/number.component';
 import { StatusComponent } from './status/status.component';
@@ -11,12 +12,13 @@ const routes: Routes = [
   { path: 'form', component: FormulaireComponent },
   { path: 'status', component: StatusComponent },
   { path: 'number/:number', component: NumberComponent },
+  { path: 'cats', component: CatsComponent },
 
   // Il est possible de chaîner les routes
   // { path: 'users', children: [
   //   {path: '', component: UserComponent},
   //   {path: 'new', component: NewUserComponent},
-  //   {path: 'edit', component: EditUserComponent},
+  //   {path: ':id/edit', component: EditUserComponent},
   // ]}
 ];
 

@@ -17,7 +17,7 @@ export class NumberComponent implements OnInit {
     // this.number = this.router.snapshot.params.number;
 
     // même principe en mode asynchrone, permet de lire en permanence le paramètre d'url
-    this.router.params.subscribe(params => {
+    this.router.params.subscribe((params) => {
       this.number = params.number
     })
   }
