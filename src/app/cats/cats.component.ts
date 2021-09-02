@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CatService } from '../shared/services/cat.service';
 
 @Component({
@@ -6,18 +7,34 @@ import { CatService } from '../shared/services/cat.service';
   templateUrl: './cats.component.html',
   styleUrls: ['./cats.component.css'],
 })
-export class CatsComponent implements OnInit {
+// attention aux implémentations
+export class CatsComponent implements OnInit, OnDestroy {
+  
   cat!: any;
+
+  catSub?: Subscription;
 
   constructor(private catService: CatService) {}
 
+  // méthodes déclenchées à l'initialisation du composant (aprés le constructeur, quand le DOM est généré)
   ngOnInit(): void {
+    console.log("Cat init")
     // appel du service pour récupérer l'observable de la requette API
-    this.catService.getCat().subscribe((cat: any) => {
+    this.catSub = this.catService.getCat().subscribe((cat: any) => {
       // au changement de valeur (notification de l'observable)
       // on change la valeur de cat du composant
       this.cat = cat[0]; // l'api retourne un tableau donc il faut extraire la valeur de ce tableau
       console.log(cat[0]);
     });
   }
+
+  // méthodes déclenchées quand le composant est "détruit"
+  ngOnDestroy(): void {
+    console.log("Cat destroy")
+    if(this.catSub){
+      // Pas necessaire içi car Angular gére le unsubscribe des observables qui viennent d'HTTP
+      this.catSub.unsubscribe();
+    }
+  }
+
 }
