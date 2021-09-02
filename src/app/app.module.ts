@@ -14,13 +14,16 @@ import { CatsComponent } from './cats/cats.component';
 import { HttpClientModule } from "@angular/common/http";
 import { CatCardComponent } from './cats/cat-card/cat-card.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+// Angular Material
+import {MatButtonModule} from '@angular/material/button';
+import { StatusModule } from './status/status.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    StatusBarComponent,
     FormulaireComponent,
-    StatusComponent,
     NumberComponent,
     CatsComponent,
     CatCardComponent,
@@ -35,6 +38,9 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
     FormsModule,
     // Module pour http (envois de requêttes)
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    StatusModule
   ],
   providers: [],
   bootstrap: [AppComponent]
