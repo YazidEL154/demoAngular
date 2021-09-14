@@ -20,11 +20,13 @@ Integration:
   script:
     - npm install
     - npm run test
+  allow_failure: true
 
 Sonar:
   stage: "Code Quality"
   image: node
   script: echo "No sonar config yet"
+  allow_failure: true
 
 Docker_push:
   stage: "Docker"
