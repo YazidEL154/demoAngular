@@ -16,10 +16,16 @@ describe('StatusBarComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(StatusBarComponent);
     component = fixture.componentInstance;
+    component.hero = {name: "Michel", hp: 400, hpMax: 7000};
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('shouldn\' not fall hp below 0', ()=>{
+    component.perdreHp(Infinity);
+    expect(component.hero.hp).toBe(0);
+  })
 });

@@ -18,19 +18,16 @@ export class CatsComponent implements OnInit, OnDestroy {
 
   // méthodes déclenchées à l'initialisation du composant (aprés le constructeur, quand le DOM est généré)
   ngOnInit(): void {
-    console.log("Cat init")
     // appel du service pour récupérer l'observable de la requette API
     this.catSub = this.catService.getCat().subscribe((cat: any) => {
       // au changement de valeur (notification de l'observable)
       // on change la valeur de cat du composant
       this.cat = cat[0]; // l'api retourne un tableau donc il faut extraire la valeur de ce tableau
-      console.log(cat[0]);
     });
   }
 
   // méthodes déclenchées quand le composant est "détruit"
   ngOnDestroy(): void {
-    console.log("Cat destroy")
     if(this.catSub){
       // Pas necessaire içi car Angular gére le unsubscribe des observables qui viennent d'HTTP
       this.catSub.unsubscribe();

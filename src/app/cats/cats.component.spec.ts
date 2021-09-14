@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CatsComponent } from './cats.component';
@@ -10,7 +10,7 @@ describe('CatsComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ CatsComponent ],
-      imports: [HttpClient]
+      imports: [HttpClientModule]
     })
     .compileComponents();
   });

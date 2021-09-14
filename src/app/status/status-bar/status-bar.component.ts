@@ -18,5 +18,8 @@ export class StatusBarComponent implements OnInit {
 
   perdreHp(nb: number) {
     this.hero.hp -= nb;
+    if(this.hero.hp < 0){
+      this.hero.hp = 0;
+    }
   }
 }
