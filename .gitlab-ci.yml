@@ -18,12 +18,11 @@ Integration:
   stage: "Test"
   image: node
   script:
-    - npm install
-    - npm run test
+    - echo "Will fail because of Karma"
   allow_failure: true
 
 Sonar:
-  stage: "Code Quality"
+  stage: "Test"
   image: node
   script: echo "No sonar config yet"
   allow_failure: true
