@@ -14,6 +14,9 @@ Build:
     - npm install
     - npm run build
 
+services:
+  - docker:dind
+
 Integration:
   stage: "Test"
   image: node
@@ -28,8 +31,9 @@ Sonar:
   allow_failure: true
 
 Docker_push:
+  tags:
+    - "docker"
   stage: "Docker"
-  image: docker:dind
   script:
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
     - docker build -t benoitsemifir/demo-angular .
