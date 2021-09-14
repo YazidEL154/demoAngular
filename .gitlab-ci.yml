@@ -30,9 +30,11 @@ Sonar:
 
 Docker_push:
   stage: "Docker"
-  image: dind
+  image: docker:dind
   script:
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
     - docker build -t benoitsemifir/demo-angular .
+    - docker push benoitsemifir/demo-angular
 
 Azure_Deploy:
   stage: "Deploy"
