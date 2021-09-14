@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Hero } from '../shared/models/hero';
+import { Hero } from '../../shared/models/hero';
 
 @Component({
   selector: 'app-status-bar',
@@ -18,5 +18,8 @@ export class StatusBarComponent implements OnInit {
 
   perdreHp(nb: number) {
     this.hero.hp -= nb;
+    if(this.hero.hp < 0){
+      this.hero.hp = 0;
+    }
   }
 }

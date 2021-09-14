@@ -29,7 +29,9 @@ module.exports = function (config) {
       subdir: '.',
       reporters: [
         { type: 'html' },
-        { type: 'text-summary' }
+        { type: 'text-summary' },
+        // Ajout du reporter lcov pour Coverage Gutters (https://marketplace.visualstudio.com/items?itemName=ryanluker.vscode-coverage-gutters)
+        { type: 'lcov' }
       ]
     },
     reporters: ['progress', 'kjhtml'],
