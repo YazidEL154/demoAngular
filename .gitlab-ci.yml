@@ -1,0 +1,39 @@
+# étapes du CI/CD (on choisit le nom)
+stages:
+  - "Build"
+  - "Test"
+  - "Code Quality"
+  - "Docker"
+  - "Deploy"
+
+# liste des étapes
+Build:
+  stage: "Build" # renseignement de l'étape au niveau du pipeline
+  image: node # image docker a utiliser
+  script: # scripts a lancer
+    - npm install
+    - npm run build
+
+Integration:
+  stage: "Test"
+  image: node
+  script:
+    - npm install
+    - npm run test
+
+Sonar:
+  stage: "Code Quality"
+  image: node
+  script: echo "No sonar config yet"
+
+Docker_push:
+  stage: "Docker"
+  image: dind
+  script:
+    - docker build -t benoitsemifir/demo-angular .
+
+Azure_Deploy:
+  stage: "Deploy"
+  image: dind
+  script:
+    - echo "No deployment yet"
