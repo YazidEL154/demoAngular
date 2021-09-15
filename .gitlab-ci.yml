@@ -5,34 +5,67 @@ stages:
   - "Code Quality"
   - "Docker"
   - "Deploy"
+services:
+  - docker:dind
 
 # liste des étapes
 Build:
+  tags:
+    - "node"
   stage: "Build" # renseignement de l'étape au niveau du pipeline
   image: node # image docker a utiliser
   script: # scripts a lancer
     - npm install
     - npm run build
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
+
 
 Integration:
+  tags:
+    - "node"
   stage: "Test"
   image: node
   script:
-    - npm install
     - npm run test
+  cache:
+    paths:
+      - coverage
 
 Sonar:
+  tags:
+    - "docker"
   stage: "Code Quality"
-  image: node
-  script: echo "No sonar config yet"
+  variables:
+    SONAR_PROJECT_BASE_DIR: "$CI_PROJECT_DIR"
+  image: sonarsource/sonar-scanner-cli
+  script: 
+  - sonar-scanner -Dsonar.projectKey=demo-angular -Dsonar.sources=. -Dsonar.host.url=http://sonar:9000 -Dsonar.login=0ea0194c47a60e7c5589bb6329ce05e11de11d1a -Dsonar.javascript.lcov.reportPaths=coverage -Dsonar.projectBaseDir=src/app
 
 Docker_push:
+  only:
+    - main
+  tags:
+    - "docker"
   stage: "Docker"
-  image: dind
+  image: "docker:stable"
+  services:
+    - docker:dind
   script:
-    - docker build -t benoitsemifir/demo-angular .
+    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD"
+    - docker build -t $CI_REGISTRY_USER/demo-angular:latest .
+    - docker tag $CI_REGISTRY_USER/demo-angular:latest $CI_REGISTRY_USER/demo-angular:$CI_COMMIT_TAG
+    - docker push $CI_REGISTRY_USER/demo-angular:latest
+    - docker push $CI_REGISTRY_USER/demo-angular:$CI_COMMIT_TAG
 
 Azure_Deploy:
+  only:
+    - main
   stage: "Deploy"
   image: dind
   script:
