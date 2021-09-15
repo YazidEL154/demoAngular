@@ -24,7 +24,7 @@ describe('StatusBarComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('shouldn\' not fall hp below 0', ()=>{
+  it('shouldn\'t not fall hp below 0', ()=>{
     component.perdreHp(Infinity);
     expect(component.hero.hp).toBe(0);
   })
