@@ -17,6 +17,13 @@ Build:
   script: # scripts a lancer
     - npm install
     - npm run build
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - node_modules
+    policy: pull
 
 
 Integration:
@@ -27,6 +34,9 @@ Integration:
   script:
     - npm install
     - npm run test
+  cache:
+    paths:
+      - coverage
 
 Sonar:
   tags:
@@ -34,7 +44,7 @@ Sonar:
   stage: "Code Quality"
   image: sonarsource/sonar-scanner-cli
   script: 
-  - sonar-scanner -Dsonar.projectKey=demo-angular -Dsonar.sources=. -Dsonar.host.url=http://sonar:9000 -Dsonar.login=0ea0194c47a60e7c5589bb6329ce05e11de11d1a
+  - sonar-scanner -Dsonar.projectKey=demo-angular -Dsonar.sources=. -Dsonar.host.url=http://sonar:9000 -Dsonar.login=0ea0194c47a60e7c5589bb6329ce05e11de11d1a -Dsonar.javascript.lcov.reportPaths=coverage
 
 Docker_push:
   only:
