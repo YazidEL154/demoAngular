@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 import { HeroService } from '../shared/services/hero.service';
+import { StatusBarComponent } from './status-bar/status-bar.component';
 
 import { StatusComponent } from './status.component';
 
@@ -11,7 +13,8 @@ describe('StatusComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [StatusComponent],
+      declarations: [StatusComponent, StatusBarComponent],
+      imports: [FormsModule]
     }).compileComponents();
   });
 

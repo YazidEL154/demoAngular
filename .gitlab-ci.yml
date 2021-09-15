@@ -25,16 +25,21 @@ Integration:
   stage: "Test"
   image: node
   script:
-    - echo "Will fail because of Karma"
+    - npm install
+    - npm run test
   allow_failure: true
 
 Sonar:
   tags:
-    - "node"
-  stage: "Test"
-  image: node
-  script: echo "No sonar config yet"
-  allow_failure: true
+    - "docker"
+  stage: "Code Quality"
+  image: sonarsource/sonar-scanner-cli
+  script: 
+  - sonar-scanner \
+    -Dsonar.projectKey=demo-angular \
+    -Dsonar.sources=. \
+    -Dsonar.host.url=http://sonar:7000 \
+    -Dsonar.login=0ea0194c47a60e7c5589bb6329ce05e11de11d1a
 
 Docker_push:
   tags:
