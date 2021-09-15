@@ -46,7 +46,7 @@ Sonar:
     SONAR_PROJECT_BASE_DIR: "$CI_PROJECT_DIR"
   image: sonarsource/sonar-scanner-cli
   script: 
-  - sonar-scanner -Dsonar.projectKey=demo-angular -Dsonar.sources=. -Dsonar.host.url=http://sonar:9000 -Dsonar.login=0ea0194c47a60e7c5589bb6329ce05e11de11d1a -Dsonar.javascript.lcov.reportPaths=coverage
+  - sonar-scanner -Dsonar.projectKey=demo-angular -Dsonar.sources=. -Dsonar.host.url=http://sonar:9000 -Dsonar.login=0ea0194c47a60e7c5589bb6329ce05e11de11d1a -Dsonar.javascript.lcov.reportPaths=coverage -Dsonar.projectBaseDir=src/app
 
 Docker_push:
   only:
